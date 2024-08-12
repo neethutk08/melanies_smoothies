@@ -2,8 +2,7 @@
 import streamlit as st
 from snowflake.snowpark.functions import col, when_matched
 import requests
-fruityvice_response = requests.get("https://fruityvice.com/api/fruit/watermelon")
-st.text(fruityvice_response)
+
 # Write directly to the app
 st.title(":cup_with_straw: Customize Your Smoothie!:cup_with_straw:")
 st.write(
@@ -31,4 +30,7 @@ if ingradients_list:
     values ('""" + ingradients_string + """','""" + name_on_order + """') """
     st.write(my_insert_stmt)
     st.stop()
+
+fruityvice_response = requests.get("https://fruityvice.com/api/fruit/watermelon")
+st.text(fruityvice_response.json)
     
