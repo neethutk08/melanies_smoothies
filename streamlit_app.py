@@ -16,8 +16,12 @@ cnx = st.connection("snowflake")
 session = cnx.session()
 #session = get_active_session()
 my_dataframe =  session.table("smoothies.public.fruit_options").select(col('SEARCH_ON'))
-st.dataframe(data=my_dataframe,use_container_width=True)
+#st.dataframe(data=my_dataframe,use_container_width=True)
+#st.stop()
+pd_df = my_dataframe.pandas()
+st.dataframe(pd_df)
 st.stop()
+
 
 
 ingradients_list = st.multiselect(
