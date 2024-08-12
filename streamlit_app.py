@@ -45,7 +45,10 @@ if ingradients_list:
     my_insert_stmt = """ insert into smoothies.public.orders(ingredients,name_on_order) 
     values ('""" + ingradients_string + """','""" + name_on_order + """') """
     st.write(my_insert_stmt)
-    st.stop()
+    #st.stop()
+    if ingradients_string:
+        session.sql(my_insert_stmt).collect()
+        st.success('Your Smoothie is ordered!', icon="✅")
 
 
     
